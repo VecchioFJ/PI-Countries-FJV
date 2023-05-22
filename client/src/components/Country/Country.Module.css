@@ -1,0 +1,24 @@
+.country{
+    background-color: rgb(17, 48, 68);
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    border: 2px solid rgb(255, 255, 255);
+    flex-wrap: wrap;
+    height: 10rem;
+    width: 20rem;
+    /* height: fit-content;
+    width: fit-content; */
+
+}
+
+.id{
+    color:azure;
+    margin: 0;
+}
+
+.bandera{
+    margin: 5px;
+    height: 9rem;
+    width: 15rem
+}

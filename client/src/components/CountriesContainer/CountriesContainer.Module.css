@@ -1,0 +1,7 @@
+.countriesContainer{
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

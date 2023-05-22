@@ -1,0 +1,70 @@
+.container {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../assets/MapCompass.jpg");
+  background-color: blue;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logoContainer{
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10rem;
+  margin-right: 1rem;
+
+}
+  
+/* .text{
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+  0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+} */
+
+.logo {
+  border-radius: 50px;
+  margin: 0 auto;
+  height: 6em;
+  padding: 0.1em;
+  will-change: filter;
+  transition: filter 300ms;
+  animation-name: logo-spin;
+  animation-duration: 5s; 
+  animation-timing-function: linear;
+  animation-iteration-count: infinite
+}
+
+.logo:hover {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  /* text-shadow: 1px 1px 2px #427388;
+  filter: drop-shadow(0 0 4em #ffffff);
+  filter: */
+
+}
+
+  
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+  
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
