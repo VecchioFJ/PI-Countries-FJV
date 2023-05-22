@@ -1,4 +1,3 @@
-//import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { countriesOnPage, nextPage, prevPage} from "../../redux/actions"
 import { useEffect } from "react"
