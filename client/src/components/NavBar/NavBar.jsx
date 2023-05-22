@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
-import style from "./NavBar.module.css"
-
-
+import "./NavBar.Module.css"
 
 const NavBar = () => {
     return( 
-        <div className={style.mainContainer}>
+        <div className="mainContainer">
             <NavLink to="/home"> Home </NavLink>
-            <NavLink to="/form"> Actividades </NavLink>
+            <NavLink to="/form"> Crea y asigna Actividades </NavLink>
+            <NavLink to="/"> Log Out </NavLink>
         </div>
     )
 }

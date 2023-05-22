@@ -1,6 +1,6 @@
-import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE,
-    GET_COUNTRY_BY_ID, GET_COUNTRIES_BY_NAME, SET_PAGE, FILTER_BY_CONTINENT } from "./action-types"
-
+import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE, GET_COUNTRY_BY_ID,
+    GET_COUNTRIES_BY_NAME, SET_PAGE, FILTER_BY_CONTINENT, SET_ORDER } from "./action-types"
+ 
 const initialState = {
     allCountries: [],
     countriesToShow: [],
@@ -8,7 +8,12 @@ const initialState = {
     countriesByNameSearch: [],
     currentPage: 1,
     countriesCurrentPage: [],
-    continentFilter: ""
+    continentFilter: "",
+    order: {
+        orderAlpha: "",
+        orderPop: "",
+        set: "orderAlpha",
+    }
 }
 
 // la contiene el type y payload.  action = {type, payload}
@@ -57,7 +62,11 @@ const reducer = (state = initialState, {type, payload}) => {
             continentFilter: payload
         }
 
-
+        case SET_ORDER: 
+        return {
+            ...state,
+            order: payload
+        }
 
         default:
             return{...state}

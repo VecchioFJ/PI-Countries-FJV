@@ -17,6 +17,11 @@ padding: 0.1rem;
   padding: 0.5rem;
 }
 
+.orders{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .hr{
   color: solid black
 }
@@ -32,7 +37,17 @@ padding: 0.1rem;
 
 .h4{
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.4rem;
+}
+
+.h4b{
+  margin-bottom: 0.1rem;
+  margin-top: 0.4rem;
+}
+
+.h6{
+  margin-bottom: 0.1rem;
+  margin-top: 0.1rem;
 }
 
 .searchbar{

@@ -3,40 +3,91 @@ import { countriesOnPage, nextPage, prevPage} from "../../redux/actions"
 import { useEffect } from "react"
 import "./Paging.Module.css";
 
+// En mi componente Paginado, defino qué países voy a renderizar en la ruta home.
+// Utilizando los estados globales
 
 const Paginado = ()=>{
     
     const COUNTRIES_PER_PAGE = 9
+    const dispatch = useDispatch()
     
+    // Obtengo del estado global la página actual y TODOS los países que quiero renderizar
     let currentPage = useSelector(state => state.currentPage)
-
-    let continentFilter = useSelector(state => state.continentFilter)
     let countriesToShow = useSelector(state => state.countriesToShow)
+
+    // FILTRADO por continente
+    let continentFilter = useSelector(state => state.continentFilter)
     
-    let countriesToShowFiltered = []
-    console.log(continentFilter);
+    //      Lógica para determinar nuevo array filtrado por continente
+    let toShowFiltered = []
     if(continentFilter === "Americas") {
-        countriesToShowFiltered = [...countriesToShow].filter(country =>{
+        toShowFiltered = [...countriesToShow].filter(country =>{
             return country.Continente === "South America" || country.Continente === "North America"})
     }
-    else if(!continentFilter) countriesToShowFiltered = countriesToShow
+    else if(!continentFilter) toShowFiltered = countriesToShow
     else {
-        countriesToShowFiltered = countriesToShow.filter(country =>{
+        toShowFiltered = countriesToShow.filter(country =>{
         return country.Continente === continentFilter})
-        console.log(countriesToShow);
-        console.log(countriesToShowFiltered);
     }
-    //console.log(countriesToShowFiltered)
+
+    //ORDENAMIENTO
+    let orderState = useSelector(state => state.order)
+    let setOrder = orderState.set
+    let orderAlpha = orderState.orderAlpha
+    let orderPop = orderState.orderPop
+
+    console.log(orderAlpha);
+
+    if (setOrder === "orderPop"){
+        // orden por poblacion
+
+        if (orderPop === "A") {
+            toShowFiltered.sort(function(a, b) {
+                if (a.Poblacion < b.Poblacion) {
+                    return -1; // a debe ser ordenado antes que b
+                }
+            });
+        }
+        if (orderPop === "D") {
+            toShowFiltered.sort(function(a, b) {
+                if (a.Poblacion > b.Poblacion) {
+                    return -1; // b debe ser ordenado antes que a
+                }
+            });
+        }
+    }
+
+    else if (setOrder === "orderAlpha"){
+        // orden alfabetico
+
+        if (orderAlpha === "A") {
+            toShowFiltered.sort(function(a, b) {
+                if (a.Nombre < b.Nombre) {
+                    return -1; // a debe ser ordenado antes que b
+                }
+            });
+        }
+        if (orderAlpha === "D") {
+            toShowFiltered.sort(function(a, b) {
+                if (a.Nombre > b.Nombre) {
+                    return -1; // b debe ser ordenado antes que a
+                }
+            });
+        }
+    }
+
+    console.log(toShowFiltered);
+
     
-    const totCountries = countriesToShowFiltered.length
+    // PAGINADO
+    const totCountries = toShowFiltered.length
     const firstIndex = (currentPage - 1) * COUNTRIES_PER_PAGE
-    let countriesCurrentPage = [...countriesToShowFiltered].splice(firstIndex, COUNTRIES_PER_PAGE)
+    let countriesCurrentPage = [...toShowFiltered].splice(firstIndex, COUNTRIES_PER_PAGE)
     
     useEffect(() => {
         dispatch(countriesOnPage(countriesCurrentPage));
-    }, [currentPage, countriesToShow, countriesToShowFiltered])
+    }, [currentPage, countriesToShow, toShowFiltered, orderState])
 
-    const dispatch = useDispatch()
 
     const prevHandler = (currPage) =>{
         if(currPage === 1) return

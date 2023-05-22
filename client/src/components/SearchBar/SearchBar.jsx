@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { getCountriesByName, setPage, countriesByContinent } from "../../redux/actions"
+import { getCountriesByName, setPage, countriesByContinent, countriesOrder } from "../../redux/actions"
 import { useDispatch } from "react-redux";
 import "./SearchBar.Module.css"
 
@@ -34,7 +34,7 @@ const SearchBar = ()=> {
 
     const [filter, setFilter] = useState("")
 
-    const handleOnChange = (event) => {
+    const handleOnChange1 = (event) => {
         // const property = event.target.name
         // const value = event.target.value
 
@@ -50,7 +50,29 @@ const SearchBar = ()=> {
         dispatch(countriesByContinent(filter))
         dispatch(setPage(1))
     }, [filter])
-    
+
+    const [order, setOrder] = useState({
+        orderAlpha: "",
+        orderPop: "",
+    })
+
+    const handleOnChange2 = (event) => {
+        const property = event.target.name
+        const value = event.target.value
+
+        setOrder({
+            ...order,
+            [property] : value,
+            set: property
+        })
+    }
+
+    useEffect(() => {
+        dispatch(countriesOrder(order))
+        dispatch(setPage(1))
+    }, [order])
+
+
 
     return (
         <div className="searchbar">
@@ -67,7 +89,7 @@ const SearchBar = ()=> {
             </div>
             <div className="filters">
                 <h4 className="h4">Filtrar por continente:</h4>
-                <select name="continent" onChange={handleOnChange} defaultValue="">
+                <select name="continent" onChange={handleOnChange1} defaultValue="">
                     <option value="" disabled >Seleccione una opción</option>
                     <option value="Africa">África</option>
                     <option value="Americas">América</option>
@@ -77,6 +99,23 @@ const SearchBar = ()=> {
                     <option value="Oceania">Oceanía</option>
                     <option value="">Todos</option>
                 </select>
+            </div>
+            <div className="orders">
+                <h4 className="h4b">Ordenamientos</h4>
+                <h6 className="h6">Alfabético:</h6>
+                <select name="orderAlpha" onChange={handleOnChange2} defaultValue="">
+                    <option value="" disabled >Seleccione una opción</option>
+                    <option value="A">Ascendente</option>
+                    <option value="D">Descendente</option>
+                </select>
+                <h6 className="h6">Población:</h6>
+                <select name="orderPop" onChange={handleOnChange2} defaultValue="">
+                    <option value="" disabled >Seleccione una opción</option>
+                    <option value="A">Ascendente</option>
+                    <option value="D">Descendente</option>
+                </select>
+
+
             </div>
         </div>
     );
