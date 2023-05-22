@@ -1,7 +1,6 @@
 import Country from "../Country/Country";
 import "./CountriesContainer.Module.css"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { getAllCountries, initialHome } from "../../redux/actions";
 
 

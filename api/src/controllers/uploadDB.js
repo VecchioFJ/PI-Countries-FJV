@@ -1,6 +1,5 @@
 const axios = require ('axios')
 const { Country } = require('../server/db.js')
-const { getAllCountries } = require('./getAllCountries.js')
 
 const uploadDB = async () => {
     try {

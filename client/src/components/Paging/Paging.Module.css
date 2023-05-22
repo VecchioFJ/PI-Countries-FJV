@@ -1,0 +1,9 @@
+.paginado{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    margin: 0.5rem
+}

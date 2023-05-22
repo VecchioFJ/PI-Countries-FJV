@@ -13,12 +13,8 @@ const Home = () => {
 //     dispatch(getAllCountries())
 // }, [])
 
-
-
-
 return(
     <div className="home">
-        <h1>Componente Home</h1>
         <SearchBar/>
         <Paginado/>
         <CountriesContainer />

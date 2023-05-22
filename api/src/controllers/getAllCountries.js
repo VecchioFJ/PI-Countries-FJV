@@ -3,6 +3,7 @@ const { Country, Activity } = require('../server/db.js')
 // const getAllCountries = async () => {
 //     return await Country.findAll()
 // }
+//
 
 const getAllCountries = async () => {
 

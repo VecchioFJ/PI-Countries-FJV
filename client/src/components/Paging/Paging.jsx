@@ -1,22 +1,40 @@
 import { useSelector, useDispatch } from "react-redux"
 import { countriesOnPage, nextPage, prevPage} from "../../redux/actions"
 import { useEffect } from "react"
+import "./Paging.Module.css";
+
 
 const Paginado = ()=>{
-
     
-    let currentPage = useSelector(state => state.currentPage)
     const COUNTRIES_PER_PAGE = 9
     
+    let currentPage = useSelector(state => state.currentPage)
+
+    let continentFilter = useSelector(state => state.continentFilter)
     let countriesToShow = useSelector(state => state.countriesToShow)
-    const totCountries = countriesToShow.length
+    
+    let countriesToShowFiltered = []
+    console.log(continentFilter);
+    if(continentFilter === "Americas") {
+        countriesToShowFiltered = [...countriesToShow].filter(country =>{
+            return country.Continente === "South America" || country.Continente === "North America"})
+    }
+    else if(!continentFilter) countriesToShowFiltered = countriesToShow
+    else {
+        countriesToShowFiltered = countriesToShow.filter(country =>{
+        return country.Continente === continentFilter})
+        console.log(countriesToShow);
+        console.log(countriesToShowFiltered);
+    }
+    //console.log(countriesToShowFiltered)
+    
+    const totCountries = countriesToShowFiltered.length
     const firstIndex = (currentPage - 1) * COUNTRIES_PER_PAGE
-    let countriesCurrentPage = [...countriesToShow].splice(firstIndex, COUNTRIES_PER_PAGE)
-    console.log(countriesCurrentPage);
+    let countriesCurrentPage = [...countriesToShowFiltered].splice(firstIndex, COUNTRIES_PER_PAGE)
     
     useEffect(() => {
         dispatch(countriesOnPage(countriesCurrentPage));
-    }, [currentPage, countriesToShow])
+    }, [currentPage, countriesToShow, countriesToShowFiltered])
 
     const dispatch = useDispatch()
 
@@ -33,7 +51,7 @@ const Paginado = ()=>{
     return(
         <div className="paginado">
             <button className="button" onClick={() => prevHandler(currentPage) }>Prev</button>
-            <h3>Página: {currentPage}</h3>
+            <h3 className="button">Página: {currentPage}</h3>
             <button className="button" onClick={() => nextHandler(currentPage) }>Next</button>
         </div>
     )

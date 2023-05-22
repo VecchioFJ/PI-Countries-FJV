@@ -1,4 +1,5 @@
-import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE, GET_COUNTRY_BY_ID, GET_COUNTRIES_BY_NAME, SET_PAGE } from "./action-types"
+import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE,
+    GET_COUNTRY_BY_ID, GET_COUNTRIES_BY_NAME, SET_PAGE, FILTER_BY_CONTINENT } from "./action-types"
 
 const initialState = {
     allCountries: [],
@@ -6,7 +7,8 @@ const initialState = {
     countryById: {},
     countriesByNameSearch: [],
     currentPage: 1,
-    countriesCurrentPage: []
+    countriesCurrentPage: [],
+    continentFilter: ""
 }
 
 // la contiene el type y payload.  action = {type, payload}
@@ -48,6 +50,13 @@ const reducer = (state = initialState, {type, payload}) => {
             ...state,
             countriesCurrentPage: payload
         }
+
+        case FILTER_BY_CONTINENT: 
+        return {
+            ...state,
+            continentFilter: payload
+        }
+
 
 
         default:

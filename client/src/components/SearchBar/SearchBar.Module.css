@@ -1,8 +1,41 @@
 .search {
-    padding: 0.5em;
-    margin: 0.2
-  }
+  padding: 0.3em;
+  margin: 0.2;
+}
+
+.buttons {
+  padding: 0.3em;
+  margin: 0.5em;
+  width: 3.4rem;
+}
+
+.searchs {
+padding: 0.1rem;
+}
+
+.filters{
+  padding: 0.5rem;
+}
 
 .hr{
   color: solid black
+}
+
+.searchbar{
+  /* display: flex;
+  flex-direction:row; */
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+}
+
+.h4{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.searchbar{
+  margin-left: 2rem;
+  margin-right: 2rem;
 }

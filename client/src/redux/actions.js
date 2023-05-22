@@ -1,4 +1,5 @@
-import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE, GET_COUNTRY_BY_ID, GET_COUNTRIES_BY_NAME, SET_PAGE } from "./action-types";
+import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE,
+   GET_COUNTRY_BY_ID, GET_COUNTRIES_BY_NAME, SET_PAGE, FILTER_BY_CONTINENT } from "./action-types"
 import axios from 'axios'
 
 
@@ -108,6 +109,16 @@ export const countriesOnPage = (countriesCurrentPage) =>{
       })
    }
 }
+
+export const countriesByContinent = (continent) =>{
+   return (dispatch) => {
+      dispatch({
+      type: FILTER_BY_CONTINENT,
+      payload: continent
+      })
+   }
+}
+
 
  
 
