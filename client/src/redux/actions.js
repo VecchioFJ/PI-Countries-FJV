@@ -1,5 +1,6 @@
-import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE, GET_COUNTRY_BY_ID,
-   GET_COUNTRIES_BY_NAME, SET_PAGE, FILTER_BY_CONTINENT, SET_ORDER } from "./action-types"
+import { GET_ALL_COUNTRIES, INIT_HOME, COUNTRIES_CURENT_PAGE,
+   GET_COUNTRY_BY_ID,GET_COUNTRIES_BY_NAME, SET_PAGE,
+   FILTER_BY_CONTINENT, SET_ORDER, GET_ALL_ACTIVITIES, FILTER_BY_ACTIVITY } from "./action-types"
 import axios from 'axios'
 
 
@@ -48,7 +49,7 @@ export const getCountriesByName = (name) => {
       try {
          const { data } = await axios.get(endpoint)
          const countries = data
-         //console.log("::::::apapa");
+
          if (!data.length) throw Error ('No hay paises con ese nombre')
          dispatch({
              type: GET_COUNTRIES_BY_NAME,
@@ -56,7 +57,6 @@ export const getCountriesByName = (name) => {
          });
  
       } catch (error) {
-         //console.log(error.message);
          dispatch({
             type: GET_COUNTRIES_BY_NAME,
             payload: []
@@ -65,14 +65,14 @@ export const getCountriesByName = (name) => {
    };
 };
 
-export const initialHome = (countriesInit) =>{
-   return (dispatch) => {
-      dispatch({
-         type: INIT_HOME,
-         payload: countriesInit
-      })
-   }
-}
+// export const initialHome = (countriesInit) =>{
+//    return (dispatch) => {
+//       dispatch({
+//          type: INIT_HOME,
+//          payload: countriesInit
+//       })
+//    }
+// }
 
 export const nextPage = (page) =>{
    return (dispatch) => {
@@ -128,7 +128,36 @@ export const countriesOrder = (order) =>{
    }
 }
 
-
+export const getAllActivities = () => {
+   const endpoint = `http://localhost:3001/activities`;
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.get(endpoint)
+         const activities = data
+         if (!data.length) throw Error ('No hay actividades')
+         dispatch({
+             type: GET_ALL_ACTIVITIES,
+             payload: activities
+         });
  
+      } catch (error) {
+         alert(error.message)
+         dispatch({
+            type: GET_ALL_ACTIVITIES,
+            payload: []
+        });
+      }
+   };
+};
+
+export const countriesByActivity = (activity) =>{
+   return (dispatch) => {
+      dispatch({
+      type: FILTER_BY_ACTIVITY,
+      payload: activity
+      })
+   }
+}
+
 
 

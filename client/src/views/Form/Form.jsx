@@ -2,9 +2,12 @@ import { useState } from "react";
 import validation from "./validation"
 import axios from "axios";
 import "./Form.Module.css";
+import { getAllActivities } from "../../redux/actions"
+import { useDispatch } from "react-redux";
 
 const Form = () => {
-
+    const dispatch = useDispatch()
+    
     const [activity, setActivity] = useState({
         Nombre:"",
         Dificultad:"1",
@@ -65,12 +68,14 @@ const Form = () => {
         await axios.post("http://localhost:3001/activities",activityModified)
         .then(res=>alert(res.data))
         .catch(err=>alert(err))
+
+        dispatch(getAllActivities()) 
     }
 
     return(
         <div>
-            <h1>Componente Form</h1>
             <form onSubmit={handleOnSubmit}>
+                <h1>Crea una nueva Actividad</h1>
                 <div>
                     <label>Nombre: </label>
                     <input type="text" name="Nombre" onChange={handleOnChange} value={activity.Nombre} placeholder="Ingrese el nombre de la actividad"/>
@@ -117,13 +122,15 @@ const Form = () => {
                 </div>
 
                 <button type="submit">Crear actividad</button>
+            </form>
 
+            <div>
                 <h3 className="buscador">Buscador de IDs por nombre</h3>
                 <label>Nombre: </label>
                 <input type="text" name="idSearch" placeholder="Ingrese el nombre del país"/>
-                <button>Buscar</button>
+                <button type="search">Buscar</button>
+            </div>
 
-            </form>
         </div>
     )
 }

@@ -3,7 +3,7 @@ const { Country } = require('../server/db.js')
 
 const uploadDB = async () => {
     try {
-        const {data} = await axios('https://restcountries.com/v3.1/all')
+        const {data} = await axios('https://restcountries.com/v3.1/all') // https://rest-countries.up.railway.app/v3/all 
 
         //if (!data) throw Error('Conexion con la API fallo')
         // Transformar la respuesta de la API en un array de objetos que coincida con el modelo "Country"

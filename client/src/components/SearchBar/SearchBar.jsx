@@ -1,11 +1,13 @@
 import { useState, useEffect} from "react";
-import { getCountriesByName, setPage, countriesByContinent, countriesOrder } from "../../redux/actions"
-import { useDispatch } from "react-redux";
+import { getCountriesByName, setPage, countriesByContinent, countriesOrder, getAllActivities, countriesByActivity } from "../../redux/actions"
+import { useDispatch, useSelector } from "react-redux";
 import "./SearchBar.Module.css"
 
 
 const SearchBar = ()=> {   
+    const dispatch = useDispatch()
    
+    // Inputs de BÚSQUEDA
     const [inputsNames, setInputsNames] = useState({
         name1: "",
         name2: ""
@@ -18,7 +20,6 @@ const SearchBar = ()=> {
             })
     }
 
-    const dispatch = useDispatch()
     useEffect(() => {
     dispatch(getCountriesByName(inputsNames.name1))
     dispatch(setPage(1))
@@ -32,16 +33,11 @@ const SearchBar = ()=> {
             })
     }
 
+
+    // FILTRO por continente
     const [filter, setFilter] = useState("")
 
     const handleOnChange1 = (event) => {
-        // const property = event.target.name
-        // const value = event.target.value
-
-        // setActivity({
-        //     ...activity,
-        //     [property] : value
-        // })
         const value = event.target.value
         setFilter(value)
     }
@@ -51,6 +47,8 @@ const SearchBar = ()=> {
         dispatch(setPage(1))
     }, [filter])
 
+
+    // ORDENAMIENTOS. Alfábetico y por Población
     const [order, setOrder] = useState({
         orderAlpha: "",
         orderPop: "",
@@ -71,6 +69,22 @@ const SearchBar = ()=> {
         dispatch(countriesOrder(order))
         dispatch(setPage(1))
     }, [order])
+
+
+    // FILTRO por actividades
+    let allActivities = useSelector(state => state.activities)
+    const [activity, setActivity] = useState("")
+
+    const handleOnChange3 = (event) => {
+        const value = event.target.value
+        setActivity(value)
+    }
+
+    useEffect(() => {
+        dispatch(getAllActivities())
+        dispatch(countriesByActivity(activity))
+        dispatch(setPage(1))
+    }, [activity])
 
 
 
@@ -114,19 +128,18 @@ const SearchBar = ()=> {
                     <option value="A">Ascendente</option>
                     <option value="D">Descendente</option>
                 </select>
-
-
+            </div>
+            <div>
+            <h4 className="h4">Seleccione una actividad para mostrar los paises asociados</h4>
+                <select name="activities" onChange={handleOnChange3} defaultValue="">
+                    <option value=""> Sin filtro por actividad</option>
+                    {allActivities.map(act => (
+                        <option value={act.Nombre} key={act.ID}>{act.Nombre}</option>
+                    ))}
+                </select>
             </div>
         </div>
     );
     }
 
 export default SearchBar
-
-// console.log(filteredCountries("Asia").length);
-// console.log(filteredCountries("Europe").length);
-// console.log(filteredCountries("Africa").length);
-// console.log(filteredCountries("North America").length);
-// console.log(filteredCountries("Oceania").length);
-// console.log(filteredCountries("Antarctica").length);
-// console.log(filteredCountries("South America").length);

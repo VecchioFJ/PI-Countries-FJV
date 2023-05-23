@@ -6,7 +6,7 @@ import { getCountryById } from "../../redux/actions";
 
 const Detail = () => {
     let {id} = useParams()
-    console.log(`ID de params: ${id}`);
+    //console.log(`ID de params: ${id}`);
     
     const dispatch = useDispatch()
     useEffect(() => {
@@ -18,13 +18,7 @@ const Detail = () => {
     return (
         
         <div>
-
-            <div >
-            <Link to= "/home">Home</Link>
-            </div>
-
             <div>
-
                 <div>
                 <h2>Detalles del País</h2>
             {
@@ -48,7 +42,7 @@ const Detail = () => {
                 countryDetail.Activities && countryDetail.Activities.length ? 
                 countryDetail.Activities.map(act => {
                 return (
-                        <div>
+                        <div key={act.id}>
                             <h4>{act.Nombre}</h4>
                             <p>Dificultad: {act.Dificultad}</p>
                             <p>Duración: {act.Duracion} horas</p>
