@@ -27,6 +27,7 @@ activitiesRouter.post('/', async (req,res) =>{
         if ( Duracion < 0 ) throw Error('La Duracion debe ser un numero positivo')
         if ( !['Verano', 'Otoño', 'Invierno', 'Primavera'].includes(Temporada) ) throw Error("La temporada debe ser: 'Verano', 'Otoño', 'Invierno' o 'Primavera'")
 
+
         //postNewActivity( postActivity )
         //res.status(201).send('Se agrego la actividad con éxito!')
         const newActivity = await postNewActivity( postActivity )

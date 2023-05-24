@@ -12,6 +12,7 @@ const postNewActivity = async ( newAct ) => {
 
         //Para que no se repita la actividad inyectada si el pais ingresado ya la tiene (No acepta actividad duplicada)
         await CountriesId.forEach(async (id) => {
+            id = id.toUpperCase()       //para que el usuario pueda ingresar el id en minúsculas
             let CountryFound = await getCountryById(id)
             let countryActivities = CountryFound.dataValues.Activities
             

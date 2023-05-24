@@ -1,7 +1,6 @@
 import { Home, Detail, Landing, Form } from "./views"
 import { Route, Routes, useLocation } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import "./assets/App.Module.css";
 
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
   const location = useLocation().pathname
 
   return (
-    <div >
+    <>
       {location !=="/" && <NavBar />}
 
       <Routes>
@@ -21,7 +20,7 @@ function App() {
 
       </Routes>
 
-    </div>
+    </>
   )
 }
 

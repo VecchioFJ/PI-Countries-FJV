@@ -1,3 +1,43 @@
-.buscador {
-    color: #888;
-  }
+
+
+.buttonn{
+  cursor: url("../../assets/brand-inertia.svg"), pointer;
+  width: 10rem;
+  height: 1.6rem;
+  margin: 1em;
+  padding: 0.3em;
+  box-shadow: 0px 10px 14px -7px #a6827e;
+  background:linear-gradient(to bottom, #7d5d3b 5%, #634b308b 100%);
+  background-color:#f4f4f400;
+  border-radius:8px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-weight:bold;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #4d3534;
+  text-align: center;
+  height:fit-content;
+}
+
+.formDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(51, 61, 41, 0.4);
+  border-radius: 01rem;
+  border-color: black;
+}
+
+.validation{
+  color: rgb(255, 191, 0);
+}

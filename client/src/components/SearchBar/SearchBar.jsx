@@ -91,19 +91,22 @@ const SearchBar = ()=> {
     return (
         <div className="searchbar">
             <div className="searchs">
-                <input className="search" type='search' name="name1" value={inputsNames.name1} onChange={handleChange} placeholder="Ingrese el nombre de un país..." />
-                <button className="buttons" onClick= {() => {setInputsNames({
-                                            ...inputsNames,
-                                            name1: ""
-                                            })
-                                        }}>Clear</button>
-                <div className="hr"></div>
-                <input className="search" type='search' name="name2" value={inputsNames.name2} onChange={handleChange} placeholder="Ingrese el nombre de un país..." />
-                <button className="buttons" onClick= {() => {nameSearch()}}>Buscar</button>
+                <div className="search">
+                    <input className="inputSearch" type='search' name="name1" value={inputsNames.name1} onChange={handleChange} placeholder="Comience a escribir aquí..." />
+                    <button className="buttons" onClick= {() => {setInputsNames({
+                                                ...inputsNames,
+                                                name1: ""
+                                                })
+                                            }} title="Haz click para borrar el contenido y mostrar todos los paises">Clear</button>
+                </div>
+                <div className="search">
+                    <input className="inputSearch" type='search' name="name2" value={inputsNames.name2} onChange={handleChange} placeholder="Ingrese el nombre de un país..." />
+                    <button className="buttons" onClick= {() => {nameSearch()}} title="Haz click para realizar una busqueda por el nombre ingresado">Buscar</button>
+                </div>
             </div>
             <div className="filters">
-                <h4 className="h4">Filtrar por continente:</h4>
-                <select name="continent" onChange={handleOnChange1} defaultValue="">
+                <h4 className="h4Filter">Filtrar por continente:</h4>
+                <select className="selectors" name="continent" onChange={handleOnChange1} defaultValue="">
                     <option value="" disabled >Seleccione una opción</option>
                     <option value="Africa">África</option>
                     <option value="Americas">América</option>
@@ -115,23 +118,23 @@ const SearchBar = ()=> {
                 </select>
             </div>
             <div className="orders">
-                <h4 className="h4b">Ordenamientos</h4>
+                <h4 className="h4Order">Ordenamientos</h4>
                 <h6 className="h6">Alfabético:</h6>
-                <select name="orderAlpha" onChange={handleOnChange2} defaultValue="">
+                <select className="selectors" name="orderAlpha" onChange={handleOnChange2} defaultValue="">
                     <option value="" disabled >Seleccione una opción</option>
                     <option value="A">Ascendente</option>
                     <option value="D">Descendente</option>
                 </select>
                 <h6 className="h6">Población:</h6>
-                <select name="orderPop" onChange={handleOnChange2} defaultValue="">
+                <select className="selectors" name="orderPop" onChange={handleOnChange2} defaultValue="">
                     <option value="" disabled >Seleccione una opción</option>
                     <option value="A">Ascendente</option>
                     <option value="D">Descendente</option>
                 </select>
             </div>
-            <div>
-            <h4 className="h4">Seleccione una actividad para mostrar los paises asociados</h4>
-                <select name="activities" onChange={handleOnChange3} defaultValue="">
+            <div className="activity">
+            <h5 className="h5Act">Seleccione una actividad para mostrar los paises asociados</h5>
+                <select className="selectors" name="activities" onChange={handleOnChange3} defaultValue="">
                     <option value=""> Sin filtro por actividad</option>
                     {allActivities.map(act => (
                         <option value={act.Nombre} key={act.ID}>{act.Nombre}</option>

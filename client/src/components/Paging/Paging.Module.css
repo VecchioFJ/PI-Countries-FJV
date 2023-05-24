@@ -2,8 +2,32 @@
     display:flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .button{
-    margin: 0.5rem
+    margin: 1rem;
+    padding: 0.3em;
+    box-shadow: 0px 10px 14px -7px #a6827e;
+    background:linear-gradient(to bottom, #7d5d3b 5%, #634b308b 100%);
+    background-color:#f4f4f400;
+    border-radius:8px;
+
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    /* font-size:20px; */
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #4d3534;
+    text-align: center;
+    height:2rem;
+}
+
+.pag{
+    color:#ffffff;
+    width: 8rem;
+    border-radius: 2rem;
+    text-align: center;
+    background-color: rgba(51, 61, 41, 0.4);
 }

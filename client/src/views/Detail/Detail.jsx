@@ -2,7 +2,7 @@ import {React, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById } from "../../redux/actions";
-
+import "./Detail.Module.css";
 
 const Detail = () => {
     let {id} = useParams()
@@ -16,11 +16,9 @@ const Detail = () => {
     const countryDetail = useSelector((state) => state.countryById)
     
     return (
-        
         <div>
             <div>
-                <div>
-                <h2>Detalles del País</h2>
+            <h2>Detalles del País</h2>
             {
                 countryDetail ?
                 <div >
@@ -34,9 +32,9 @@ const Detail = () => {
                     <h4>Población: {countryDetail.Poblacion} Hab.</h4>
                 </div> : <p>Loading ...</p>
             }
-                </div>
-            <div>
+            </div>
 
+            <div>
             <h3>Actividades del País</h3>
             {
                 countryDetail.Activities && countryDetail.Activities.length ? 
@@ -50,11 +48,10 @@ const Detail = () => {
                         </div>
                         
                     ) 
-                 }) 
-                 : <p>No existen actividades en este país</p> 
+                }) 
+                : <p>No existen actividades en este país</p> 
             }
-             <Link to="/form"><button>Crear Actividad</button></Link>               
-            </div>
+            <Link to="/form"><button className="button">Crear una nueva actividad!</button></Link>               
             </div>
         </div>
     )

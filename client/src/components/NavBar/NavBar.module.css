@@ -1,13 +1,67 @@
-.mainContainer{
-    width: 100%;
-    height: 1.3rem;
-    background-color: rgb(174, 186, 194);
+.mainContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: rgba(194, 197, 170, 0.4);
     border-radius: 15px;
-    border: 1px solid rgb(19, 19, 37);
+    border: 1px solid rgb(40, 54, 24);
     margin-bottom: 0.1rem;
+    width: 100%;
+    height: 2.5rem;
+    padding-top:0.6rem;
+    padding-bottom:0.5rem;
+  }
+  
+  /* .navlink {
+    font-family: monospace, Verdana, Geneva, Tahoma, sans-serif;
+    color: #FEFAE0;
+    text-decoration: none;
+    border-radius: 0.3rem;
+  }
 
+  .navlink:hover {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+    transform: scale(1.03);
+    color: rgba(221, 161, 94)
+  } */
 
+  .navlink {
+	box-shadow: 0px 10px 14px -7px #a6827e;
+	background:linear-gradient(to bottom, #7d5d3b 5%, #634b308b 100%);
+	background-color:#f4f4f400;
+	border-radius:8px;
+	display:inline-block;
+	cursor: url("../../assets/compass2.svg"), pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding: 5px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4d3534;
+  text-align: center;
+  height:fit-content;
+}
+.navlink:hover {
+	background:linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
+	background-color:#634b30;
+}
+.navlink:active {
+	position:relative;
+	top:1px;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+    padding: 5px;
+    height: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

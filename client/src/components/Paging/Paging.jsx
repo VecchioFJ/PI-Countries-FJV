@@ -112,7 +112,7 @@ const Paginado = ()=>{
     return(
         <div className="paginado">
             <button className="button" onClick={() => prevHandler(currentPage) }>Prev</button>
-            <h3 className="button">Página: {currentPage}/{maxPage}</h3>
+            <h3 className="pag">Página: {currentPage}/{maxPage}</h3>
             <button className="button" onClick={() => nextHandler(currentPage) }>Next</button>
         </div>
     )

@@ -73,13 +73,14 @@ const Form = () => {
     }
 
     return(
-        <div>
+        <div className="formContainer">
+            <div className="formDiv">
             <form onSubmit={handleOnSubmit}>
                 <h1>Crea una nueva Actividad</h1>
                 <div>
                     <label>Nombre: </label>
                     <input type="text" name="Nombre" onChange={handleOnChange} value={activity.Nombre} placeholder="Ingrese el nombre de la actividad"/>
-                    {errors.Nombre && <p>{errors.Nombre}</p>}
+                    {errors.Nombre && <p className="validation">{errors.Nombre}</p>}
                 </div>
 
                 <div>
@@ -96,7 +97,7 @@ const Form = () => {
                 <div>
                     <label>Duración (hs): </label>
                     <input type="integer" name="Duracion" onChange={handleOnChange} value={activity.Duracion} placeholder="Ingrese la duración de la actividad en horas"/>
-                    {errors.Duracion && <p>{errors.Duracion}</p>}
+                    {errors.Duracion && <p className="validation">{errors.Duracion}</p>}
                 </div>
 
                 <div>
@@ -113,22 +114,26 @@ const Form = () => {
                 <div>
                     <label>ID: </label>
                     <input type="text" name="country1" onChange={handleOnChange} value={activity.country1} placeholder="Ingrese el ID del país"/>
-                    {errors.country1 && <p>{errors.country1}</p>}
+                    {errors.country1 && <p className="validation">{errors.country1}</p>}
                 </div>
                 <div>
                     <label>ID: </label>
                     <input type="text" name="country2" onChange={handleOnChange} value={activity.country2} placeholder="Ingrese el ID del país"/>
-                    {errors.country2 && <p>{errors.country2}</p>}
+                    {errors.country2 && <p className="validation">{errors.country2}</p>}
                 </div>
 
-                <button type="submit">Crear actividad</button>
+                <button type="submit" className="buttonn">Crear actividad</button>
             </form>
+            </div>
 
-            <div>
+            <div className="formDiv">
                 <h3 className="buscador">Buscador de IDs por nombre</h3>
                 <label>Nombre: </label>
                 <input type="text" name="idSearch" placeholder="Ingrese el nombre del país"/>
                 <button type="search">Buscar</button>
+                <ul>
+                    
+                </ul>
             </div>
 
         </div>
