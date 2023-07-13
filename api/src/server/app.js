@@ -26,7 +26,7 @@ server.use('/', routes);
 
 // Subo toda la info a mi base de datos:  
 const { uploadDB } = require('../controllers/uploadDB.js');
-uploadDB()  //COMENTO la funcion porque a esta cargada mi base de datos
+// uploadDB()  //COMENTO la funcion porque a esta cargada mi base de datos
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

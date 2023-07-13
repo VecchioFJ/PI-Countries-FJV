@@ -1,36 +1,40 @@
-import {React, useEffect} from "react";
+import { useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById } from "../../redux/actions";
 import "./Detail.Module.css";
+import DetailCard from "../../components/DetailCard/DetailCard"
 
 const Detail = () => {
     let {id} = useParams()
     //console.log(`ID de params: ${id}`);
     
+    const countryDetail = useSelector((state) => state.countryById)
+    console.log(countryDetail);
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCountryById(id))
     },[dispatch, id])
 
-    const countryDetail = useSelector((state) => state.countryById)
-    
     return (
         <div>
             <div>
-            <h2>Detalles del País</h2>
+            <h2 className="detailTittle">Country Details</h2>
             {
                 countryDetail ?
-                <div >
-                    <img src={countryDetail.Bandera} alt="Imagen no disponible" />
-                    <h2>{countryDetail.Nombre}</h2>
-                    <h4>{countryDetail.Continente}</h4>
-                    <h4>{countryDetail.ID}</h4>
-                    <h4>Capital: {countryDetail.Capital}</h4>
-                    <h4>Región: {countryDetail.Subregion}</h4>
-                    <h4>Área: {countryDetail.Area} km²</h4>
-                    <h4>Población: {countryDetail.Poblacion} Hab.</h4>
-                </div> : <p>Loading ...</p>
+                <DetailCard {...countryDetail}/>
+                // <div >
+                //     <img src={countryDetail.Bandera} alt="Imagen no disponible" />
+                //     <h2>{countryDetail.Nombre}</h2>
+                //     <h4>{countryDetail.Continente}</h4>
+                //     <h4>{countryDetail.ID}</h4>
+                //     <h4>Capital: {countryDetail.Capital}</h4>
+                //     <h4>Región: {countryDetail.Subregion}</h4>
+                //     <h4>Área: {countryDetail.Area} km²</h4>
+                //     <h4>Población: {countryDetail.Poblacion} Hab.</h4>
+                // </div>
+                : <p>Loading ...</p>
             }
             </div>
 

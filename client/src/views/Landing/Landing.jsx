@@ -6,7 +6,9 @@ const Landing = () => {
     return(
         <div className="container">
             <div className="logoContainer">
-                <h1 className="intro"> Explora los paises!</h1>
+                <NavLink to={"/home"} >
+                    <h1 className="intro"> Explora los paises!</h1>
+                </NavLink>
                 <NavLink to={"/home"} >
                     <img src={compass} alt="img landing" className="logo" />
                 </NavLink>
