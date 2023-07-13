@@ -76,3 +76,8 @@
   height: 3rem;
 
 }
+
+.custom-link {
+  color: #FFF; 
+  text-decoration: none; 
+}

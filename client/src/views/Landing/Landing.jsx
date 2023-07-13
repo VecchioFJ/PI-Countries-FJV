@@ -6,7 +6,7 @@ const Landing = () => {
     return(
         <div className="container">
             <div className="logoContainer">
-                <NavLink to={"/home"} >
+                <NavLink to={"/home"} className="custom-link" >
                     <h1 className="intro"> Explora los paises!</h1>
                 </NavLink>
                 <NavLink to={"/home"} >
