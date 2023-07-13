@@ -24,7 +24,6 @@ const uploadDB = async () => {
 
         console.log('::::::::::::::::');
         console.log('Base de datos cargada con éxito.  Primer país en la BD:');
-        console.log(countriesData[0]);
 
         await Country.bulkCreate(countriesData);
         return

@@ -7,6 +7,18 @@ import { useDispatch } from "react-redux";
 
 const Form = () => {
     const dispatch = useDispatch()
+
+    //Para ingresar más paises podría, por ejemplo, generar un nuevo estado que sea un array y lo vaya cargando con los paises
+
+    // const [countriesID, setCoutriesID] = useState([])
+
+    // const handleIDInputsORSelects = (event) =>{
+    //     const ID = event.target.value
+    //     setCoutriesID([
+    //         ...countriesID,
+    //         ID
+    //     ])
+    // }
     
     const [activity, setActivity] = useState({
         Nombre:"",
@@ -16,6 +28,7 @@ const Form = () => {
         country1:"",
         country2:"",
     })
+
 
     const [errors ,setErrors]= useState({
         Nombre:"",

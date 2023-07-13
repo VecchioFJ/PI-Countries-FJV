@@ -49,7 +49,6 @@ export const getCountriesByName = (name) => {
       try {
          const { data } = await axios.get(endpoint)
          const countries = data
-
          if (!data.length) throw Error ('No hay paises con ese nombre')
          dispatch({
              type: GET_COUNTRIES_BY_NAME,

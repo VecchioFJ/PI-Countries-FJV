@@ -9,14 +9,14 @@ countriesRouter.get('/', async (req,res) =>{
     try {
 
         const { name } = req.query
-
+        console.log(name);
         if(!name){
             const allCountries = await getAllCountries()
             return res.status(200).json(allCountries)
         }
 
         const countriesFound = await getCountriesByName(name)
-        if(countriesFound.length === 0) throw Error('No se encontraron paises con ese nombre')
+        //if(countriesFound.length === 0) throw Error('No se encontraron paises con ese nombre')
         return res.status(200).json(countriesFound)
 
 

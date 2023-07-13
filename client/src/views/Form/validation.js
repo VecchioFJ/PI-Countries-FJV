@@ -21,7 +21,6 @@ const validation = (activity) => {
     else if (activity.country2.length !== 3 || !(/^[A-Z]+$/i.test(activity.country2)) ) errors.country2 = 'El ID debe ser un código de 3 letras'
     
     return errors
-
 }
 
 export default validation;  

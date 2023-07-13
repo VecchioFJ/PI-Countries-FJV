@@ -14,10 +14,12 @@ const { Country } = require('../server/db.js')
 const { Op } = require('sequelize') 
 
 
+
 const getCountriesByName = async (name)=>{
      
     const countriesFiltered = await Country.findAll({ where: {
         Nombre: {[Op.iLike]: `%${name}%` },
+
     }});
 
     return countriesFiltered

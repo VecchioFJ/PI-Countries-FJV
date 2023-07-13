@@ -8,7 +8,7 @@ const postNewActivity = async ( newAct ) => {
         const newActivity = await Activity.create({ Nombre, Dificultad, Duracion, Temporada });
 
         // Debajo encuentro la funcion que siempre me inyecta la actividad
-        //await newActivity.addCountries(CountriesId)
+        // await newActivity.addCountries(CountriesId)
 
         //Para que no se repita la actividad inyectada si el pais ingresado ya la tiene (No acepta actividad duplicada)
         await CountriesId.forEach(async (id) => {
@@ -20,8 +20,8 @@ const postNewActivity = async ( newAct ) => {
 
             let aux = false
             countryActivities.forEach(async (Activity) => {
-                console.log(Activity.dataValues.Nombre);
-                console.log(id);                
+                //console.log(Activity.dataValues.Nombre);
+                //console.log(id);                
                 if ( Nombre === Activity.dataValues.Nombre) aux = true
             });
 
